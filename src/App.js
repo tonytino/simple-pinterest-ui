@@ -7,11 +7,23 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          {
+            //<img src={logo} className="App-logo" alt="logo" />}
+          }
+
+          <h1 className="App-title">Consuming the Pinterest API</h1>
         </header>
+
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          Going to build an app that will be used to acquire access to the
+          Pinterest API.
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          Come back soon!
         </p>
       </div>
     );

@@ -1,5 +1,21 @@
+/*
+  Important Notice!
+
+  We are using height: 100% instead of height: 100vh in App.css, which means
+  we must also set the same for html and body, since App is nested within these.
+  This relates to our styling for SideDrawer, which also has height: 100%.
+
+  While vh is largely supported as this time, it's still relatively new and this
+  is not much more work to ensure consistent styling across devices/clients.
+*/
+
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  height: 100%;
 }

@@ -1,0 +1,26 @@
+.toggle-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /*
+    24 intentional here due to flex settings
+    play with amt to see what I mean
+  */
+  height: 24px;
+  width: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.toggle-button:focus {
+  outline: none;
+}
+
+.toggle-button__line {
+  width: 25px;
+  height: 2px;
+  background: white;
+}

@@ -1,6 +1,7 @@
 {
-  "short_name": "Tonytino's Moving Castle",
-  "name": "Tonytino's Moving Castle",
+  "short_name": "Simple Pinterest UI",
+  "name": "Simple Pinterest UI",
+  "description": "An alternative UI for browsing your Pinterest boards.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +11,6 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#008080",
+  "background_color": "#fff"
 }

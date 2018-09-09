@@ -1,0 +1,75 @@
+.toolbar {
+  position: fixed;
+  width: 100%;
+  background: teal;
+  top: 0;
+  left: 0;
+  height: 55px;
+}
+
+.toolbar__navigation {
+  display: flex;
+  align-items: center;
+  /* 100% of .toolbar height since this is nested within */
+  height: 100%;
+  /* Only add padding to left and right of nav content */
+  padding: 0 1rem;
+}
+
+.toolbar__logo {
+  margin-left: 0.75rem;
+}
+
+.toolbar__logo a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.toolbar__navigation-items ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.toolbar__navigation-items li {
+  padding: 0 0.5rem;
+}
+
+.toolbar__navigation-items a {
+  color: white;
+  text-decoration: none;
+}
+
+.toolbar__logo a:hover,
+.toolbar__navigation-items a:hover,
+.toolbar__navigation-items a:active {
+  /* Orange variant - May not be permanent choice, but is suffice for now */
+  color: #ff8100;
+}
+
+.spacer {
+  flex: 1;
+}
+
+/*
+  Toolbar will only be shown when screen size is >= 768px
+  SideDrawer will only be shown when screen size is <= 769px
+*/
+@media (max-width: 768px) {
+  .toolbar__navigation-items {
+    display: none;
+  }
+
+}
+
+@media (min-width: 769px) {
+  .toolbar__toggle-button {
+    display: none;
+  }
+
+  .toolbar__logo {
+    margin-left: 0;
+  }
+}

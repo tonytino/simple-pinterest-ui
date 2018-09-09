@@ -1,30 +1,19 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Toolbar from './components/Toolbar/Toolbar';
 import './App.css';
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          {
-            //<img src={logo} className="App-logo" alt="logo" />}
-          }
+        <Toolbar />
 
-          <h1 className="App-title">Consuming the Pinterest API</h1>
-        </header>
-
-        <p className="App-intro">
-          Going to build an app that will be used to acquire access to the
-          Pinterest API.
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          Come back soon!
-        </p>
+        <main>
+          <p>
+            Coming soon!
+          </p>
+        </main>
       </div>
     );
   }

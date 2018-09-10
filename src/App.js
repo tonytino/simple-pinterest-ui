@@ -1,55 +1,64 @@
 import React, { Component } from 'react';
 import Toolbar from './components/Toolbar/Toolbar';
-import SideDrawer from './components/SideDrawer/SideDrawer';
-import Backdrop from './components/Backdrop/Backdrop';
+// https://github.com/balloob/react-sidebar#readme
+import Sidebar from "react-sidebar";
 import './App.css';
 
 class App extends Component {
 
   state = {
-    sideDrawerOpen: false
+    sideBarOpen: false
   };
 
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-      // We prevent async/batch update issues by using prevState as a arg
-      // instead of just doing something like:
-      // this.setState({ sideDrawerOpen: !this.state.sideDrawerOpen });
-      return { sideDrawerOpen: !prevState.sideDrawerOpen };
-    })
+  openSideBar = (open) => {
+    this.setState({ sideBarOpen: open });
   };
 
-  backdropClickHandler = () => {
-    // No need to worry about async/batch updates issue since clicking backdrop
-    // should always result in a closed drawer (regardless if it's open or not)
-    // If we introduce other components, like a modal, that would depend on this
-    // functionality, we would simply also set their states to "closed" here too
-    this.setState({ sideDrawerOpen: false });
-  }
+  sideBarStyles = () => {
+    return {
+      sidebar: {
+        background: "white",
+        width: "300px",
+        maxWidth: "70%",
+        height: "100%",
+        position: "fixed",
+      }
+    }
+  };
 
-  renderBackdrop = () => {
-    // Can also be based on other conditions, like a modal being open
-    if (this.state.sideDrawerOpen) {
-      return (
-        <Backdrop
-          click={this.backdropClickHandler}
-        />
-      );
-    };
+  renderSideBarContent = () => {
+    return (
+      <nav className="side-bar__content">
+        <ul>
+          <li>
+            <a href="/">
+              Board Name 1
+            </a>
+          </li>
+
+          <li>
+            <a href="/">
+              Board Name 2
+            </a>
+          </li>
+        </ul>
+      </nav>
+    );
   };
 
   render() {
     return (
       <div className="App">
-        <Toolbar
-          drawerClickHandler={this.drawerToggleClickHandler}
-        />
-
-        <SideDrawer
-          show={this.state.sideDrawerOpen}
-        />
-
-        { this.renderBackdrop() }
+        <Sidebar
+          sidebar={this.renderSideBarContent()}
+          styles={this.sideBarStyles()}
+          open={this.state.sideBarOpen}
+          onSetOpen={this.openSideBar}
+        >
+          <Toolbar
+            drawerClickHandler={this.openSideBar}
+          />
+        </Sidebar>
 
         <main>
           <p>

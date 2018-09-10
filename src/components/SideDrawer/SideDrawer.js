@@ -37,6 +37,7 @@ const sideDrawer = props => {
             className="contributor"
             href="https://github.com/AubreyB13"
             target="_blank"
+            rel="noopener noreferrer"
           >
             Aubrey Browne
           </a>
@@ -48,6 +49,7 @@ const sideDrawer = props => {
             className="contributor"
             href="https://github.com/tonytino"
             target="_blank"
+            rel="noopener noreferrer"
           >
             Anthony Hernandez
           </a>

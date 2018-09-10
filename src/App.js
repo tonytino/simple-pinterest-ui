@@ -53,6 +53,7 @@ class App extends Component {
 
         <main>
           <p>
+            <br />
             Going to build an app that will be used to acquire access to the
             Pinterest API.
             <br />

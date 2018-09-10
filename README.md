@@ -1,6 +1,6 @@
 ## About
 
-**[Simple Pinterest UI](https://jovial-almeida-64a798.netlify.com/)**
+**[Simple Pinterest UI](https://simple-pinterest-ui.netlify.com/)**
 
 A web app that will be used to consume the Pinterest API on behalf of users
 to create an alternative, simple UI for viewing Boards & Pins.

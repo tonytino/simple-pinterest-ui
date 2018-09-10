@@ -5,9 +5,21 @@
 A web app that will be used to consume the Pinterest API on behalf of users
 to create an alternative, simple UI for viewing Boards & Pins.
 
+## Contributing
+
+1. Clone the project
+2. Branch off of `git checkout netlify && git checkout -b YOUR-BRANCH-NAME`
+3. Commit your work and push it up
+4. Open a pull request for your branch using `netlify` as the **base** branch
+5. Wait for Netlify to deploy a preview (see _Details_ next to Merge button)
+6. Preview changes in preview domain provided by Netlify to confirm changes
+7. Confirm changes for both Mobile and Desktop views
+8. Merge branch
+
 ## Credits
 
-Web Development: Anthony Hernandez
+_Concept and Data Science:_ **[Aubrey Browne](https://github.com/AubreyB13)**
+_Web Development:_ **[Anthony Hernandez](https://github.com/tonytino)**
 
 # Create React App README
 

@@ -10,3 +10,44 @@ main p {
   text-align: center;
   font-size: large;
 }
+
+nav ul li,
+nav ul li a {
+  color: teal;
+}
+
+
+
+/*
+  SIDE BAR STYLES
+*/
+
+.side-bar__content {
+
+}
+
+.side-bar__content ul {
+  /* Consume entire height of side-drawer */
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  /* Position links at top of side-drawer */
+  justify-content: flex-start;
+  top: 0;
+}
+
+.side-bar__content li {
+  margin: 0.5rem 0;
+}
+
+.side-bar__content a {
+  color: teal;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.side-bar__content a:hover,
+.side-bar__content a:active {
+  color: #ff8100;
+}

@@ -1,13 +1,63 @@
 ## About
 
-**[Simple Pinterest UI](https://jovial-almeida-64a798.netlify.com/)**
+**[Simple Pinterest UI](https://simple-pinterest-ui.netlify.com/)**
 
 A web app that will be used to consume the Pinterest API on behalf of users
 to create an alternative, simple UI for viewing Boards & Pins.
 
+## Developing
+
+You'll need either `npm` or `yarn` to develop for this web app. Note that you
+should not use both! This leads to issues, so it's best to chose one and stick
+with it. While `yarn` has historically been favored over `npm`, the differences
+are effectively non-existent at this point. `yarn` certainly has the nicest
+CLI output (subjective, obviously), but `npm` is what you'll come across the
+most on the internet. The choice is yours. _Only run commands presented below
+for one of the two depending on what you've chosen._
+
+```
+brew install npm
+brew install yarn
+```
+
+If you don't already have homebrew installed, visit
+[Homebrew](https://brew.sh/) to get started.
+
+With either `npm` or `yarn` installed, you can now download the necessary
+packages.
+
+```
+npm install
+yarn install
+```
+
+You should now have all the dependencies you need to start the app.
+
+```
+npm start
+yarn start
+```
+
+The app will start on [localhost:3000](http://localhost:3000/).
+
+Have fun and good luck!
+
+## Contributing
+
+1. Branch off of `git checkout netlify && git checkout -b YOUR-BRANCH-NAME`
+2. Commit your work and push it up
+3. Open a pull request for your branch using `netlify` as the **base** branch
+4. Wait for Netlify to deploy a preview (see _Details_ next to Merge button)
+5. Preview changes in preview domain provided by Netlify to confirm changes
+6. Confirm changes for both Mobile and Desktop views
+7. Merge the branch (this will cause the changes to be deployed to production)
+
+_The deploy to production should take less than 5 minutes._
+
 ## Credits
 
-Web Development: Anthony Hernandez
+_Concept and Data Science:_ **[Aubrey Browne](https://github.com/AubreyB13)**
+_Web Development:_ **[Anthony Hernandez](https://github.com/tonytino)**
 
 # Create React App README
 

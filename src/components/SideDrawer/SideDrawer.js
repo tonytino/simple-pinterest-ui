@@ -28,6 +28,37 @@ const sideDrawer = props => {
         <li>
           <a href="/">Board Name 4</a>
         </li>
+
+        <li>
+          <a href="/">Board Name 5</a>
+        </li>
+
+        <li>
+          <a href="/">Board Name 6</a>
+        </li>
+        <li>
+          <a href="/">Board Name 1</a>
+        </li>
+
+        <li>
+          <a href="/">Board Name 2</a>
+        </li>
+
+        <li>
+          <a href="/">Board Name 3</a>
+        </li>
+
+        <li>
+          <a href="/">Board Name 4</a>
+        </li>
+
+        <li>
+          <a href="/">Board Name 5</a>
+        </li>
+
+        <li>
+          <a href="/">Board Name 6</a>
+        </li>
       </ul>
 
       <div className="side-drawer__footer">

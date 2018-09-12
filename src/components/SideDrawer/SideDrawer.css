@@ -63,7 +63,7 @@
   text-align: center;
   color: teal;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 .side-drawer a:hover,
@@ -79,7 +79,4 @@
 }
 
 @media (min-width: 769px) {
-  .side-drawer {
-    display: none;
-  }
 }

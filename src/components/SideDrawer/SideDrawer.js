@@ -14,50 +14,50 @@ const sideDrawer = props => {
     <nav className={drawerClasses}>
       <ul>
         <li>
-          <a href="/">Board Name 1</a>
+          <a href="/">Another Wedding Board</a>
         </li>
 
         <li>
-          <a href="/">Board Name 2</a>
+          <a href="/">Another Wedding Board</a>
         </li>
 
         <li>
-          <a href="/">Board Name 3</a>
+          <a href="/">Another Wedding Board</a>
         </li>
 
         <li>
-          <a href="/">Board Name 4</a>
+          <a href="/">Another Wedding Board</a>
         </li>
 
         <li>
-          <a href="/">Board Name 5</a>
+          <a href="/">Another Wedding Board</a>
         </li>
 
         <li>
-          <a href="/">Board Name 6</a>
+          <a href="/">Another Wedding Board</a>
         </li>
         <li>
-          <a href="/">Board Name 1</a>
-        </li>
-
-        <li>
-          <a href="/">Board Name 2</a>
+          <a href="/">Another Wedding Board</a>
         </li>
 
         <li>
-          <a href="/">Board Name 3</a>
+          <a href="/">Another Wedding Board</a>
         </li>
 
         <li>
-          <a href="/">Board Name 4</a>
+          <a href="/">Another Wedding Board</a>
         </li>
 
         <li>
-          <a href="/">Board Name 5</a>
+          <a href="/">Another Wedding Board</a>
         </li>
 
         <li>
-          <a href="/">Board Name 6</a>
+          <a href="/">Another Wedding Board</a>
+        </li>
+
+        <li>
+          <a href="/">Another Wedding Board</a>
         </li>
       </ul>
     </nav>

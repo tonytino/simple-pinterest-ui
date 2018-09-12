@@ -6,7 +6,22 @@ main {
   margin-top: 65px;
 }
 
-main p {
-  text-align: center;
-  font-size: large;
+.pins-container img {
+  display: block;
+  margin: auto;
+  height: auto;
+}
+
+
+@media (max-width: 768px) {
+  .pins-container img {
+    max-width: 80%;
+    min-width: 80%;
+  }
+}
+
+@media (min-width: 769px) {
+  .pins-container img {
+    max-width: 50%;
+  }
 }

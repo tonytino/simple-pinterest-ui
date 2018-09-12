@@ -60,32 +60,6 @@ const sideDrawer = props => {
           <a href="/">Board Name 6</a>
         </li>
       </ul>
-
-      <div className="side-drawer__footer">
-        <div className="side-drawer__footer__content">
-          Concept and Data Science by:
-          <a
-            className="contributor"
-            href="https://github.com/AubreyB13"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Aubrey Browne
-          </a>
-
-          <br />
-
-          Web Development by:
-          <a
-            className="contributor"
-            href="https://github.com/tonytino"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Anthony Hernandez
-          </a>
-        </div>
-      </div>
     </nav>
   );
 };

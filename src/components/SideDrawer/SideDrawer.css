@@ -71,35 +71,6 @@
   color: #ff8100;
 }
 
-.side-drawer__footer {
-  /*min-height: 70%;*/
-  /*background-color: #EFEFEF;*/
-  text-align: center;
-  font-size: x-small;
-  color: grey;
-  padding-right: 1rem;
-}
-
-.side-drawer__footer__content {
-  /*position: absolute;*/
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding-bottom: 5px;
-}
-
-.side-drawer__footer__content a {
-  font-size: xx-small;
-  text-decoration: none;
-}
-
-.side-drawer__footer .contributor {
-  color: black;
-  padding-left: 5px;
-  padding-top: 5px;
-  font-size: medium;
-}
-
 /*
   Toolbar will only be shown when screen size is >= 768px
   SideDrawer will only be shown when screen size is <= 769px

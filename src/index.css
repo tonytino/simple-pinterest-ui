@@ -42,9 +42,10 @@ footer .contributor {
 /*
   Toolbar will only be shown when screen size is >= 768px
   SideDrawer will only be shown when screen size is <= 769px
-*/
+*//*
 @media (max-width: 768px) {
   footer {
     display: none
   }
 }
+*/

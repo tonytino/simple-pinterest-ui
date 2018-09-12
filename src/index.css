@@ -19,3 +19,32 @@ body {
   font-family: sans-serif;
   height: 100%;
 }
+
+footer {
+  position: fixed;
+  padding: 0.25rem;
+  background-color: #EFEFEF;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.5rem;
+  color: grey;
+  padding-right: 1rem;
+}
+
+footer .contributor {
+  color: black;
+  padding-left: 5px;
+  text-decoration: none;
+}
+
+/*
+  Toolbar will only be shown when screen size is >= 768px
+  SideDrawer will only be shown when screen size is <= 769px
+*/
+@media (max-width: 768px) {
+  footer {
+    display: none
+  }
+}

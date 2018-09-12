@@ -67,7 +67,7 @@
 .side-drawer__footer {
   /*min-height: 70%;*/
   /*background-color: #EFEFEF;*/
-  height: 100%;
+  /* height: 100%; */
   text-align: center;
   font-size: x-small;
   color: grey;

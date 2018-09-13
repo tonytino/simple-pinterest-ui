@@ -11,6 +11,9 @@ class UserSessionControls extends React.Component {
     };
 
     this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+    this.processLogin = this.processLogin.bind(this);
+    this.processLogout = this.processLogout.bind(this);
     this.resetState = this.resetState.bind(this);
   };
 
@@ -18,10 +21,24 @@ class UserSessionControls extends React.Component {
     Pinterest.login({ scope : 'read_public' }, this.props.onAuthenticate);
   };
 
+  logout() {
+    Pinterest.logout(this.processLogout);
+  }
+
   resetState() {
     this.setState({
       loggedIn: !!Pinterest.getSession()
     })
+  }
+
+  processLogin() {
+    this.props.onAuthenticate();
+    this.resetState()
+  }
+
+  processLogout() {
+    this.props.onAuthenticate();
+    this.resetState()
   }
 
   render() {
@@ -31,9 +48,7 @@ class UserSessionControls extends React.Component {
       ? (
         <button
           className="logout-button"
-          onClick={() => {
-            Pinterest.logout(this.props.onAuthenticate);
-          }}
+          onClick={this.logout}
         >
           Sign out
         </button>
@@ -41,9 +56,7 @@ class UserSessionControls extends React.Component {
       : (
         <button
           className="login-button"
-          onClick={() => {
-            this.login()
-          }}
+          onClick={this.login}
         >
           Log In
         </button>

@@ -33,10 +33,11 @@
         });
       };
 
-      (function(d, s, id){
-        var js, pjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
+      (function(doc, script, id){
+        var js, pjs = doc.getElementsByTagName(script)[0];
+        if (doc.getElementById(id)) {return;}
+        js = doc.createElement(script);
+        js.id = id;
         js.src = "//assets.pinterest.com/sdk/sdk.js";
         pjs.parentNode.insertBefore(js, pjs);
       }(document, 'script', 'pinterest-jssdk'));

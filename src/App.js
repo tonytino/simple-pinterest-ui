@@ -5,6 +5,11 @@ import Backdrop from './components/Backdrop/Backdrop';
 import './App.css';
 
 const Pinterest = window.PDK;
+Pinterest.init({
+  appId: '4988577106693740856',
+  cookie: true
+});
+
 
 class App extends Component {
 
@@ -46,7 +51,7 @@ class App extends Component {
   };
 
   fetchPins = () => {
-    if (Pinterest && !!Pinterest.getSession()) {
+    if (!!Pinterest.getSession()) {
       return Pinterest.me('pins', response => {
         const userPins = response.data.map(pin => pin.url);
         this.setState({
@@ -71,9 +76,9 @@ class App extends Component {
   render() {
     const { pins } = this.state;
 
-    const pinsToRender = pins.map(pin => {
+    const pinsToRender = pins.map((pin, index) => {
         return (
-          <div className="pin-wrap">
+          <div key={index} className="pin-wrap">
             <img
               src={pin}
               alt="pinterest-pin"

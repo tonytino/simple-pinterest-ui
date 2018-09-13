@@ -24,24 +24,10 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Simple Pinterest UI</title>
-    <!-- <script src=https://assets.pinterest.com/sdk/sdk.js"></script> -->
-    <script>
-      window.pAsyncInit = function() {
-        PDK.init({
-          appId: "4988577106693740856",
-          cookie: true
-        });
-      };
-
-      (function(doc, script, id){
-        var js, pjs = doc.getElementsByTagName(script)[0];
-        if (doc.getElementById(id)) {return;}
-        js = doc.createElement(script);
-        js.id = id;
-        js.src = "//assets.pinterest.com/sdk/sdk.js";
-        pjs.parentNode.insertBefore(js, pjs);
-      }(document, 'script', 'pinterest-jssdk'));
-    </script>
+    <script
+      src="https://assets.pinterest.com/sdk/sdk.js"
+      type="text/javascript"
+    ></script>
   </head>
   <body>
     <noscript>

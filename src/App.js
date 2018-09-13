@@ -76,7 +76,8 @@ class App extends Component {
   render() {
     const { pins } = this.state;
 
-    const pinsToRender = pins.map((pin, index) => {
+    const pinsToRender = pins.length
+      ? pins.map((pin, index) => {
         return (
           <div key={index} className="pin-wrap">
             <img
@@ -87,6 +88,17 @@ class App extends Component {
           </div>
         )
       }
+      : [
+        "https://i.pinimg.com/564x/c3/83/3e/c3833e56c5b984cf70b23e9da9cfb6c1.jpg",
+        "https://i.pinimg.com/564x/4c/6a/98/4c6a988f193b8b0a7ad488d5995c9642.jpg",
+        "https://i.pinimg.com/564x/95/0b/b0/950bb0e6d71372119d8a7a6aa862c295.jpg",
+        "https://i.pinimg.com/564x/f7/c6/2b/f7c62babfe968438947aa9ae11fd1c9d.jpg",
+        "https://i.pinimg.com/564x/fd/ab/6d/fdab6dee09c491aabcce9f3a6c6e2c88.jpg",
+        "https://i.pinimg.com/564x/d4/8f/c2/d48fc2c152cdcac09a82f9b0d3c4ff91.jpg",
+        "https://i.pinimg.com/564x/2b/02/5c/2b025c4f4c3dffec981c88ff62054939.jpg",
+        "https://i.pinimg.com/564x/81/c5/a9/81c5a9ddf9f28a029fc58c4e90d7de25.jpg",
+        "https://i.pinimg.com/564x/b6/45/9f/b6459fe42b90004790e73d215a18f6b4.jpg",
+      ]
     )
 
     return (

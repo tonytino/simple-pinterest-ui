@@ -2,6 +2,7 @@
 // https://www.youtube.com/watch?v=l6nmysZKHFU
 import React from 'react';
 import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
+import Authenticate from '../Authenticate/Authenticate.js';
 import './Toolbar.css'
 
 const Toolbar = props => (
@@ -25,7 +26,9 @@ const Toolbar = props => (
       <div className="toolbar__navigation-items">
         <ul>
           <li>
-            <a href="/">Log Out</a>
+            <Authenticate
+              onAuthenticate={props.onAuthenticate}
+            />
           </li>
         </ul>
       </div>

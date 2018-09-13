@@ -14,47 +14,52 @@ const sideDrawer = props => {
     <nav className={drawerClasses}>
       <ul>
         <li>
-          <a href="/">Board Name 1</a>
+          <a href="/">Another Wedding Board</a>
         </li>
 
         <li>
-          <a href="/">Board Name 2</a>
+          <a href="/">Another Wedding Board</a>
         </li>
 
         <li>
-          <a href="/">Board Name 3</a>
+          <a href="/">Another Wedding Board</a>
         </li>
 
         <li>
-          <a href="/">Board Name 4</a>
+          <a href="/">Another Wedding Board</a>
+        </li>
+
+        <li>
+          <a href="/">Another Wedding Board</a>
+        </li>
+
+        <li>
+          <a href="/">Another Wedding Board</a>
+        </li>
+        <li>
+          <a href="/">Another Wedding Board</a>
+        </li>
+
+        <li>
+          <a href="/">Another Wedding Board</a>
+        </li>
+
+        <li>
+          <a href="/">Another Wedding Board</a>
+        </li>
+
+        <li>
+          <a href="/">Another Wedding Board</a>
+        </li>
+
+        <li>
+          <a href="/">Another Wedding Board</a>
+        </li>
+
+        <li>
+          <a href="/">Another Wedding Board</a>
         </li>
       </ul>
-
-      <div className="side-drawer__footer">
-        <div className="side-drawer__footer__content">
-          Concept and Data Science by:
-          <a
-            className="contributor"
-            href="https://github.com/AubreyB13"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Aubrey Browne
-          </a>
-
-          <br />
-
-          Web Development by:
-          <a
-            className="contributor"
-            href="https://github.com/tonytino"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Anthony Hernandez
-          </a>
-        </div>
-      </div>
     </nav>
   );
 };

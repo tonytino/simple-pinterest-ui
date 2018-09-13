@@ -15,7 +15,7 @@ class UserSessionControls extends React.Component {
   };
 
   login() {
-    Pinterest.login({ scope : 'read_public' }, this.props.onAuthenticate());
+    Pinterest.login({ scope : 'read_public' }, this.props.onAuthenticate);
   };
 
   resetState() {
@@ -32,7 +32,7 @@ class UserSessionControls extends React.Component {
         <button
           className="logout-button"
           onClick={() => {
-            Pinterest.logout(this.props.onAuthenticate());
+            Pinterest.logout(this.props.onAuthenticate;
           }}
         >
           Sign out

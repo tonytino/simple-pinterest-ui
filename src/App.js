@@ -10,7 +10,7 @@ class App extends Component {
 
   state = {
     sideDrawerOpen: false,
-    pins: [
+    pins: this.fetchPins() || [
       "https://i.pinimg.com/564x/c3/83/3e/c3833e56c5b984cf70b23e9da9cfb6c1.jpg",
       "https://i.pinimg.com/564x/4c/6a/98/4c6a988f193b8b0a7ad488d5995c9642.jpg",
       "https://i.pinimg.com/564x/95/0b/b0/950bb0e6d71372119d8a7a6aa862c295.jpg",

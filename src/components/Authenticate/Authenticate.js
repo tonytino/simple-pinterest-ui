@@ -7,7 +7,7 @@ class UserSessionControls extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: !!Pinterest.getSession();
+      loggedIn: !!Pinterest.getSession()
     };
 
     this.login = this.login.bind(this);

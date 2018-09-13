@@ -32,7 +32,7 @@ class UserSessionControls extends React.Component {
         <button
           className="logout-button"
           onClick={() => {
-            Pinterest.logout(this.props.onAuthenticate;
+            Pinterest.logout(this.props.onAuthenticate);
           }}
         >
           Sign out

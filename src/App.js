@@ -56,6 +56,7 @@ class App extends Component {
 
   fetchPins = () => {
     let boardPins = [];
+    let boardPinsUrls = [];
 
     if (!!Pinterest.getSession()) {
       // Log boards data

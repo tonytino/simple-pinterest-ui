@@ -68,7 +68,7 @@ class App extends Component {
         { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },
         response => {
           // Capture all the pins we got from the request
-          boardPins = boardPins.concat(response.data.map(pin => pin.image.original.url));
+          boardPins = boardPins.concat(response.data);
 
           // Check if there's more pins to pull for the board
           if (response.hasNext) {
@@ -76,12 +76,16 @@ class App extends Component {
             response.next();
           }
 
+          // Collect all the pin urls
+          boardPinsUrls = boardPins.map(pin => pin.image.original.url);
+
           // Log all the pins we've collected
-          console.log(response.data);
+          console.log('Data for all the pins', boardPins);
+          console.log('URLs for all the pins', boardPinsUrls);
 
           // Update the page to load all the pins
           this.setState({
-            pins: boardPins
+            pins: boardPins.map(pin => pin.image.original.url)
           });
       });
     } else {

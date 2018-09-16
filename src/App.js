@@ -17,7 +17,8 @@ class App extends Component {
     super(props);
     this.state = {
       sideDrawerOpen: false,
-      pins: []
+      pins: [],
+      boards: []
     }
   }
 
@@ -60,19 +61,7 @@ class App extends Component {
         console.log(response.data)
       })
 
-      // Log pins data
-      // Pinterest.me(
-      //   'pins',
-      //   { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },
-      //   response => {
-      //   const userPins = response.data.map(pin => pin.image.original.url);
-      //   console.log(response.data)
-      //   this.setState({
-      //     pins: userPins
-      //   })
-      // });
-
-      Pinterest.me(
+      Pinterest.request(
         '/boards/300545043822002582/pins/',
         { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },
         response => {

@@ -16,49 +16,6 @@ const sideDrawer = props => {
         <li>
           <a href="/">Another Wedding Board</a>
         </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
       </ul>
     </nav>
   );

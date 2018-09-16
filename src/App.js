@@ -55,6 +55,8 @@ class App extends Component {
   };
 
   fetchPins = () => {
+    let boardPins;
+
     if (!!Pinterest.getSession()) {
       // Log boards data
       Pinterest.me('boards', response => {
@@ -65,11 +67,17 @@ class App extends Component {
         '/boards/300545043822002582/pins/',
         { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },
         response => {
-        const userPins = response.data.map(pin => pin.image.original.url);
-        console.log(response.data)
-        this.setState({
-          pins: userPins
-        })
+          boardPins = boardPins.concat(response.data.map(pin => pin.image.original.url));
+
+          if (response.hasNext) {
+            response.next(); // this will recursively go to this same callback
+          }
+
+          console.log(response.data);
+
+          this.setState({
+            pins: boardPins
+          });
       });
     } else {
       this.setState({

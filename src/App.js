@@ -61,8 +61,19 @@ class App extends Component {
       })
 
       // Log pins data
+      // Pinterest.me(
+      //   'pins',
+      //   { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },
+      //   response => {
+      //   const userPins = response.data.map(pin => pin.image.original.url);
+      //   console.log(response.data)
+      //   this.setState({
+      //     pins: userPins
+      //   })
+      // });
+
       Pinterest.me(
-        'pins',
+        '/boards/300545043822002582/pins/',
         { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },
         response => {
         const userPins = response.data.map(pin => pin.image.original.url);
@@ -70,7 +81,7 @@ class App extends Component {
         this.setState({
           pins: userPins
         })
-      });
+      )
     } else {
       this.setState({
         pins: [

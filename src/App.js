@@ -55,7 +55,7 @@ class App extends Component {
   };
 
   fetchPins = () => {
-    let boardPins;
+    let boardPins = [];
 
     if (!!Pinterest.getSession()) {
       // Log boards data
@@ -67,14 +67,19 @@ class App extends Component {
         '/boards/300545043822002582/pins/',
         { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },
         response => {
+          // Capture all the pins we got from the request
           boardPins = boardPins.concat(response.data.map(pin => pin.image.original.url));
 
+          // Check if there's more pins to pull for the board
           if (response.hasNext) {
-            response.next(); // this will recursively go to this same callback
+            // This will recursively go to this same callback to get more pins
+            response.next();
           }
 
+          // Log all the pins we've collected
           console.log(response.data);
 
+          // Update the page to load all the pins
           this.setState({
             pins: boardPins
           });

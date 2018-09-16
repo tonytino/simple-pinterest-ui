@@ -81,7 +81,7 @@ class App extends Component {
         this.setState({
           pins: userPins
         })
-      )
+      });
     } else {
       this.setState({
         pins: [

@@ -55,6 +55,12 @@ class App extends Component {
 
   fetchPins = () => {
     if (!!Pinterest.getSession()) {
+      // Log boards data
+      Pinterest.me('boards', response => {
+        console.log(response.data)
+      })
+
+      // Log pins data
       Pinterest.me(
         'pins',
         { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },

@@ -56,7 +56,7 @@ class App extends Component {
   fetchPins = () => {
     if (!!Pinterest.getSession()) {
       Pinterest.me(
-        'boards',
+        'pins',
         { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },
         response => {
         const userPins = response.data.map(pin => pin.image.original.url);

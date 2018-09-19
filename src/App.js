@@ -84,11 +84,10 @@ class App extends Component {
           // Log all the pins we've collected
           console.log('Data for all the pins', boardPins);
           console.log('URLs for all the pins', boardPinsUrls);
-
-          // Update the page to load all the pins
-          this.setState({
-            pins: boardPins.map(pin => pin.image.original.url)
-          });
+      });
+      // Update the page to load all the pins
+      this.setState({
+        pins: boardPinsUrls
       });
     } else {
       this.setState({

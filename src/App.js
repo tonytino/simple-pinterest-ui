@@ -62,7 +62,7 @@ class App extends Component {
 
     async function getPinsForBoardId(boardId) {
       // Fetch all the pins for the boardId
-      let fetchedBoardPins = await Pinterest.request(
+      await Pinterest.request(
         `/boards/${boardId}/pins/`,
         { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },
         response => {
@@ -74,28 +74,35 @@ class App extends Component {
             // This will recursively go to this same callback to get more pins
             response.next();
           }
-          return boardPins
-      });
+          console.log('Went to next but still got here test.')
+        }
+      );
+
+      boardPinsUrls = boardPins.map(pin => pin.image.original.url)
+
       // Fetch all the boards for the user
       boards = Pinterest.me('boards', response => response.data)
 
-      // Collect all the board's pin urls as an array
-      boardPinsUrls = fetchedBoardPins.map(pin => pin.image.original.url);
+      // Return all the data we've collected
+      return {
+        boards,
+        boardPins,
+        boardPinsUrls,
+      }
+    }
 
-      // Log all the data we've collected
-      console.log('Your Boards Data:', boards);
-      console.log('Pin Data for Current Board:', boardPins);
-      console.log('Pin Urls for Current Board:', boardPinsUrls);
+    // If someone is logged in, get the pins for the board id defined at the beg
+    if (!!Pinterest.getSession()) {
+      const requestedData = getPinsForBoardId(boardId);
+
+      console.log('Your Boards Data:', requestedData.boards);
+      console.log('Pin Data for Current Board:', requestedData.boardPins);
+      console.log('Pin Urls for Current Board:', requestedData.boardPinsUrls);
 
       // Update the page to load all the pins
       this.setState({
         pins: boardPinsUrls
       });
-    }
-
-    // If someone is logged in, get the pins for the board id defined at the beg
-    if (!!Pinterest.getSession()) {
-      getPinsForBoardId(boardId);
     } else {
       // Otherwise, use some backup pins for filler
       this.setState({

@@ -79,12 +79,16 @@ class App extends Component {
           }
 
           // Collect all the pin urls
-          boardPinsUrls = boardPins.map(pin => pin.image.original.url);
+          if (boardPins.length) {
+            boardPinsUrls = boardPins.map(pin => pin.image.original.url);
+          }
 
           // Log all the pins we've collected
           console.log('Data for all the pins', boardPins);
           console.log('URLs for all the pins', boardPinsUrls);
-      });
+        }
+      );
+
       // Update the page to load all the pins
       this.setState({
         pins: boardPinsUrls
@@ -106,22 +110,23 @@ class App extends Component {
     }
   }
 
+  renderPin = (pin, index) => {
+    return (
+      <div key={index} className="pin-wrap">
+        <img
+          src={pin}
+          alt="pinterest-pin"
+        />
+        <br />
+      </div>
+    )
+  }
+
   render() {
     const { pins } = this.state;
 
     const pinsToRender = pins.length
-      ? pins.map((pin, index) => {
-            return (
-              <div key={index} className="pin-wrap">
-                <img
-                  src={pin}
-                  alt="pinterest-pin"
-                />
-                <br />
-              </div>
-            )
-          }
-        )
+      ? pins.map((pin, index) => this.renderPin(pin, index))
       : [
         "https://i.pinimg.com/564x/c3/83/3e/c3833e56c5b984cf70b23e9da9cfb6c1.jpg",
         "https://i.pinimg.com/564x/4c/6a/98/4c6a988f193b8b0a7ad488d5995c9642.jpg",
@@ -132,7 +137,7 @@ class App extends Component {
         "https://i.pinimg.com/564x/2b/02/5c/2b025c4f4c3dffec981c88ff62054939.jpg",
         "https://i.pinimg.com/564x/81/c5/a9/81c5a9ddf9f28a029fc58c4e90d7de25.jpg",
         "https://i.pinimg.com/564x/b6/45/9f/b6459fe42b90004790e73d215a18f6b4.jpg",
-      ]
+      ].map((pin, index) => this.renderPin(pin, index));
 
     return (
       <div className="App">

@@ -57,6 +57,7 @@ class App extends Component {
   fetchPins = () => {
     let boardPins = [];
     let boardPinsUrls = [];
+    const boardId = '300545043822002582';
 
     if (!!Pinterest.getSession()) {
       // Log boards data
@@ -65,7 +66,7 @@ class App extends Component {
       })
 
       Pinterest.request(
-        '/boards/300545043822002582/pins/',
+        `/boards/${boardId}/pins/`,
         { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },
         response => {
           // Capture all the pins we got from the request

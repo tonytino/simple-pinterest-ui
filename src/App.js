@@ -6,6 +6,7 @@ import './App.css';
 
 const Pinterest = window.PDK;
 const DefaultPhotoUrl = "https://i.pinimg.com/564x/4c/6a/98/4c6a988f193b8b0a7ad488d5995c9642.jpg";
+const ErrorPhotoUrl = "https://i.pinimg.com/564x/d4/8f/c2/d48fc2c152cdcac09a82f9b0d3c4ff91.jpg";
 
 Pinterest.init({
   appId: '4988577106693740856',
@@ -63,11 +64,12 @@ class App extends Component {
     const boardId = '300545043822002582';
 
     if (!!Pinterest.getSession()) {
-      try {
-        Pinterest.request(
-          `/boards/${boardId}/pins/`,
-          { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },
-          response => {
+      Pinterest.request(
+        `/boards/${boardId}/pins/`,
+        { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },
+        response => {
+          console.log('Raw Response', response);
+          try {
             // Capture all the pins we got from the request
             boardPins = boardPins.concat(response.data);
 
@@ -96,15 +98,15 @@ class App extends Component {
             this.setState({
               pins: [boardPinsUrls[0]]
             });
+          } catch(error) {
+            console.error(error);
+            alert("Sorry, but we might be getting rate-limited by Pinterest. See the log for more details.")
+            this.setState({
+              pins: [ErrorPhotoUrl]
+            });
           }
-        );
-      } catch(error) {
-        console.error(error);
-        alert("Sorry, but we might be getting rate-limited by Pinterest. See the log for more details.")
-        this.setState({
-          pins: [DefaultPhotoUrl]
-        });
-      }
+        }
+      );
     } else {
       this.setState({
         pins: [DefaultPhotoUrl]

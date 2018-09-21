@@ -20,7 +20,9 @@ class App extends Component {
     this.state = {
       sideDrawerOpen: false,
       pins: [],
-      boards: []
+      boards: [],
+      pinsUrls: [],
+      pinsData: [],
     }
 
     this.fetchPins = this.fetchPins.bind(this);
@@ -96,7 +98,9 @@ class App extends Component {
 
             // Update the page to load the first pin (avoid rate limit)
             this.setState({
-              pins: [boardPinsUrls[0]]
+              pins: [boardPinsUrls[0]],
+              pinsUrls: boardPinsUrls,
+              pinsData: boardPins,
             });
           } catch(error) {
             console.error(error);
@@ -126,6 +130,46 @@ class App extends Component {
     )
   }
 
+  renderPinsUrls = () => {
+    const { pinsUrls } = this.state;
+
+    if (pinsUrls) {
+      return (
+        <div className="pins-urls-pre-wrap">
+          <h3>URLs for all Pins</h3>
+          <pre>
+            [
+              {
+                pinsUrls.map(url => {
+                  return (
+                    <div key={url}>
+                      {`  ${url}`},
+                    </div>
+                  )
+                })
+              }
+            ]
+          </pre>
+        </div>
+      )
+    }
+  }
+
+  renderPinsData = () => {
+    const { pinsData } = this.state;
+
+    if (pinsData) {
+      return (
+        <div className="pins-data-pre-wrap">
+          <h3>Data for all Pins</h3>
+          <pre>
+            {JSON.stringify(pinsData, undefined, 2)}
+          </pre>
+        </div>
+      )
+    }
+  }
+
   render() {
     const { pins } = this.state;
 
@@ -148,8 +192,12 @@ class App extends Component {
 
         <main>
           <div className="pins-container">
+            <h3>Most Recent Pin(s) for Board</h3>
             {pinsToRender}
+            <i>May only be showing a single pin due to rate limiting.</i>
           </div>
+          {this.renderPinsUrls()}
+          {this.renderPinsData()}
         </main>
       </div>
     );

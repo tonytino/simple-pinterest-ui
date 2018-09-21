@@ -21,6 +21,8 @@ class App extends Component {
       pins: [],
       boards: []
     }
+
+    this.fetchPins = this.fetchPins.bind(this);
   }
 
   componentDidMount() {
@@ -55,7 +57,7 @@ class App extends Component {
     };
   };
 
-  fetchPins = () => {
+  fetchPins() {
     let boardPins = [];
     let boardPinsUrls = [];
     const boardId = '300545043822002582';
@@ -97,7 +99,7 @@ class App extends Component {
       );
     } else {
       this.setState({
-        pins: [this.renderPin(DefaultPhotoUrl, 0)]
+        pins: [DefaultPhotoUrl]
       })
     }
   }

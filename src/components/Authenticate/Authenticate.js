@@ -65,9 +65,9 @@ class UserSessionControls extends React.Component {
 }
 
 
-const Authenticate = () => (
+const Authenticate = (props) => (
   <div className="user-session-controls">
-    <UserSessionControls />
+    <UserSessionControls onAuthenticate={props.onAuthenticate} />
   </div>
 );
 

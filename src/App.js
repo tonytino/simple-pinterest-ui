@@ -63,44 +63,52 @@ class App extends Component {
     const boardId = '300545043822002582';
 
     if (!!Pinterest.getSession()) {
-      Pinterest.request(
-        `/boards/${boardId}/pins/`,
-        { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },
-        response => {
-          // Capture all the pins we got from the request
-          boardPins = boardPins.concat(response.data);
+      try {
+        Pinterest.request(
+          `/boards/${boardId}/pins/`,
+          { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },
+          response => {
+            // Capture all the pins we got from the request
+            boardPins = boardPins.concat(response.data);
 
-          // Check if there's more pins to pull for the board
-          if (response.hasNext) {
-            // This will recursively go to this same callback to get more pins
-            response.next();
-            return null;
+            // Check if there's more pins to pull for the board
+            if (response.hasNext) {
+              // This will recursively go to this same callback to get more pins
+              response.next();
+              return null;
+            }
+
+            // Collect all the pin urls
+            if (boardPins.length) {
+              boardPinsUrls = boardPins.map(pin => pin.image.original.url);
+            }
+
+            // Log all the pins we've collected
+            console.log('Data for all the pins', boardPins);
+            console.log('URLs for all the pins', boardPinsUrls);
+
+            // Log boards data
+            Pinterest.me('boards', response => {
+              console.log(response.data)
+            })
+
+            // Update the page to load the first pin (avoid rate limit)
+            this.setState({
+              pins: [boardPinsUrls[0]]
+            });
           }
-
-          // Collect all the pin urls
-          if (boardPins.length) {
-            boardPinsUrls = boardPins.map(pin => pin.image.original.url);
-          }
-
-          // Log all the pins we've collected
-          console.log('Data for all the pins', boardPins);
-          console.log('URLs for all the pins', boardPinsUrls);
-
-          // Log boards data
-          Pinterest.me('boards', response => {
-            console.log(response.data)
-          })
-
-          // Update the page to load the first pin (avoid rate limit)
-          this.setState({
-            pins: [boardPinsUrls[0]]
-          });
-        }
-      );
+        );
+      } catch(error) {
+        console.error(error);
+        alert("Sorry, but we might be getting rate-limited by Pinterest. See the log for more details.")
+        this.setState({
+          pins: [DefaultPhotoUrl]
+        });
+      }
     } else {
       this.setState({
         pins: [DefaultPhotoUrl]
-      })
+      });
     }
   }
 

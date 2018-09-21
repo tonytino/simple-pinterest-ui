@@ -97,7 +97,7 @@ class App extends Component {
       );
     } else {
       this.setState({
-        pins: [this.renderPin(DefaultPhotoUrl, 0))]
+        pins: [this.renderPin(DefaultPhotoUrl, 0)]
       })
     }
   }
@@ -119,7 +119,7 @@ class App extends Component {
 
     const pinsToRender = pins.length
       ? pins.map((pin, index) => this.renderPin(pin, index))
-      : [this.renderPin(DefaultPhotoUrl, 0))];
+      : [this.renderPin(DefaultPhotoUrl, 0)];
 
     return (
       <div className="App">

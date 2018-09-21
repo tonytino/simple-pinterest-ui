@@ -87,13 +87,13 @@ class App extends Component {
           // Log all the pins we've collected
           console.log('Data for all the pins', boardPins);
           console.log('URLs for all the pins', boardPinsUrls);
+
+          // Update the page to load the first pin (avoid rate limit)
+          this.setState({
+            pins: [boardPinsUrls[0]]
+          });
         }
       );
-
-      // Update the page to load the first pin (avoid rate limit)
-      this.setState({
-        pins: [boardPinsUrls[0]]
-      });
     } else {
       this.setState({
         pins: [

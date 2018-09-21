@@ -76,6 +76,7 @@ class App extends Component {
           if (response.hasNext) {
             // This will recursively go to this same callback to get more pins
             response.next();
+            return null;
           }
 
           // Collect all the pin urls
@@ -89,9 +90,9 @@ class App extends Component {
         }
       );
 
-      // Update the page to load all the pins
+      // Update the page to load the first pin (avoid rate limit)
       this.setState({
-        pins: boardPinsUrls
+        pins: [boardPinsUrls[0]]
       });
     } else {
       this.setState({

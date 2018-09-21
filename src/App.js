@@ -60,11 +60,6 @@ class App extends Component {
     const boardId = '300545043822002582';
 
     if (!!Pinterest.getSession()) {
-      // Log boards data
-      Pinterest.me('boards', response => {
-        console.log(response.data)
-      })
-
       Pinterest.request(
         `/boards/${boardId}/pins/`,
         { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },
@@ -87,6 +82,11 @@ class App extends Component {
           // Log all the pins we've collected
           console.log('Data for all the pins', boardPins);
           console.log('URLs for all the pins', boardPinsUrls);
+
+          // Log boards data
+          Pinterest.me('boards', response => {
+            console.log(response.data)
+          })
 
           // Update the page to load the first pin (avoid rate limit)
           this.setState({

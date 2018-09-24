@@ -65,6 +65,7 @@ class App extends Component {
   };
 
   fetchPins() {
+    console.log('Fetching data from Pinterest...');
     let boardPins = [];
     let boardsData = [];
     let boardPinsUrls = [];
@@ -101,6 +102,7 @@ class App extends Component {
               boardsData = response.data;
               console.log('Your Boards Data', response.data);
             })
+            console.log('testing');
 
             // Update the page to load the first pin (avoid rate limit)
             this.setState({

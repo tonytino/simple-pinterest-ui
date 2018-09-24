@@ -50,7 +50,7 @@ class UserSessionControls extends React.Component {
           className="logout-button"
           onClick={this.logout}
         >
-          Sign out
+          Sign Out
         </button>
       )
       : (

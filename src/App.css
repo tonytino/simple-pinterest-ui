@@ -16,16 +16,16 @@ main {
   height: auto;
 }
 
-.pins-urls-pre-wrap {
-  width: 80%;
-  margin: auto;
-  font-size: 12px;
-}
-
+.pins-urls-pre-wrap,
+.boards-data-pre-wrap,
 .pins-data-pre-wrap {
   width: 80%;
+  max-width: 80%;
   margin: auto;
   font-size: 12px;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  white-space: pre-wrap;
 }
 
 @media (max-width: 768px) {

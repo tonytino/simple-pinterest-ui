@@ -19,10 +19,14 @@ class App extends Component {
     super(props);
     this.state = {
       sideDrawerOpen: false,
+      sideDrawerData: [],
       pins: [],
       boards: [],
       pinsUrls: [],
       pinsData: [],
+      boardsData: [],
+      activeBoardId: '',
+      loadingPins: [],
     }
 
     this.fetchPins = this.fetchPins.bind(this);
@@ -62,6 +66,7 @@ class App extends Component {
 
   fetchPins() {
     let boardPins = [];
+    let boardsData = [];
     let boardPinsUrls = [];
     const boardId = '300545043822002582';
 
@@ -93,7 +98,8 @@ class App extends Component {
 
             // Log boards data
             Pinterest.me('boards', response => {
-              console.log(response.data)
+              boardsData = response.data;
+              console.log('Your Boards Data', response.data);
             })
 
             // Update the page to load the first pin (avoid rate limit)
@@ -101,6 +107,7 @@ class App extends Component {
               pins: [boardPinsUrls[0]],
               pinsUrls: boardPinsUrls,
               pinsData: boardPins,
+              boardsData: boardsData,
             });
           } catch(error) {
             console.error(error);
@@ -133,7 +140,7 @@ class App extends Component {
   renderPinsUrls = () => {
     const { pinsUrls } = this.state;
 
-    if (pinsUrls) {
+    if (pinsUrls.length) {
       return (
         <div className="pins-urls-pre-wrap">
           <h3>URLs for all Pins</h3>
@@ -158,12 +165,27 @@ class App extends Component {
   renderPinsData = () => {
     const { pinsData } = this.state;
 
-    if (pinsData) {
+    if (pinsData.length) {
       return (
         <div className="pins-data-pre-wrap">
           <h3>Data for all Pins</h3>
           <pre>
             {JSON.stringify(pinsData, undefined, 2)}
+          </pre>
+        </div>
+      )
+    }
+  }
+
+  renderBoardsData = () => {
+    const { boardsData } = this.state;
+
+    if (boardsData.length) {
+      return (
+        <div className="boards-data-pre-wrap">
+          <h3>Data for all your Boards</h3>
+          <pre>
+            {JSON.stringify(boardsData, undefined, 2)}
           </pre>
         </div>
       )
@@ -198,7 +220,13 @@ class App extends Component {
           </div>
           {this.renderPinsUrls()}
           {this.renderPinsData()}
+          {this.renderBoardsData()}
         </main>
+
+        <br>
+        </br>
+        <br>
+        </br>
       </div>
     );
   }

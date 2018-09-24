@@ -2,8 +2,6 @@
 }
 
 .user-session-controls button {
-  /*opacity: 0.5;*/
-  /*background-color: #4CAF50; /* Green */
   background-color: Transparent;
   background-repeat: no-repeat;
   cursor: pointer;

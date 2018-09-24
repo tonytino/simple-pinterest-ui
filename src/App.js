@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Toolbar from './components/Toolbar/Toolbar';
 import SideDrawer from './components/SideDrawer/SideDrawer';
 import Backdrop from './components/Backdrop/Backdrop';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import './App.css';
 
 const Pinterest = window.PDK;
@@ -109,7 +110,7 @@ class App extends Component {
 
             // Update the page to load the first pin (avoid rate limit)
             this.setState({
-              pins: [boardPinsUrls[0]],
+              pins: boardPinsUrls.slice(0,3),
               pinsUrls: boardPinsUrls,
               pinsData: boardPins,
               loadingData: false
@@ -125,7 +126,8 @@ class App extends Component {
       );
     } else {
       this.setState({
-        pins: [DefaultPhotoUrl]
+        pins: [DefaultPhotoUrl],
+        loadingData: false
       });
     }
   }
@@ -144,24 +146,32 @@ class App extends Component {
 
   renderPinsUrls = () => {
     const { pinsUrls } = this.state;
+    const jsonData = JSON.stringify(pinsUrls, undefined, 2);
 
     if (pinsUrls.length) {
       return (
-        <div className="pins-urls-pre-wrap">
+        <div>
           <h3>URLs for all Pins</h3>
-          <pre>
-            [
-              {
-                pinsUrls.map(url => {
-                  return (
-                    <div key={url}>
-                      {`  ${url}`},
-                    </div>
-                  )
-                })
-              }
-            ]
-          </pre>
+          <CopyToClipboard text={jsonData}>
+            <div className="pins-urls-pre-wrap">
+              <button className="copy-to-clipboard">
+                Copy to Clipboard
+              </button>
+              <pre>
+                [
+                  {
+                    pinsUrls.map(url => {
+                      return (
+                        <div key={url}>
+                          {`  ${url}`},
+                        </div>
+                      )
+                    })
+                  }
+                ]
+              </pre>
+            </div>
+          </CopyToClipboard>
         </div>
       )
     }
@@ -169,14 +179,22 @@ class App extends Component {
 
   renderPinsData = () => {
     const { pinsData } = this.state;
+    const jsonData = JSON.stringify(pinsData, undefined, 2);
 
     if (pinsData.length) {
       return (
-        <div className="pins-data-pre-wrap">
+        <div>
           <h3>Data for all Pins</h3>
-          <pre>
-            {JSON.stringify(pinsData, undefined, 2)}
-          </pre>
+          <CopyToClipboard text={jsonData}>
+            <div className="pins-data-pre-wrap">
+              <button className="copy-to-clipboard">
+                Copy to Clipboard
+              </button>
+              <pre>
+                {jsonData}
+              </pre>
+            </div>
+          </CopyToClipboard>
         </div>
       )
     }
@@ -184,14 +202,22 @@ class App extends Component {
 
   renderBoardsData = () => {
     const { boardsData } = this.state;
+    const jsonData = JSON.stringify(boardsData, undefined, 2);
 
     if (boardsData.length) {
       return (
-        <div className="boards-data-pre-wrap">
+        <div>
           <h3>Data for all your Boards</h3>
-          <pre>
-            {JSON.stringify(boardsData, undefined, 2)}
-          </pre>
+          <CopyToClipboard text={jsonData}>
+            <div className="boards-data-pre-wrap">
+              <button className="copy-to-clipboard">
+                Copy to Clipboard
+              </button>
+              <pre>
+                {jsonData}
+              </pre>
+            </div>
+          </CopyToClipboard>
         </div>
       )
     }
@@ -229,9 +255,8 @@ class App extends Component {
           : (
             <main>
               <div className="pins-container">
-                <h3>Most Recent Pin(s) for Board</h3>
+                <h3>Most Recent Pins for Board</h3>
                 {pinsToRender}
-                <i>May only be showing a single pin due to rate limiting.</i>
               </div>
               {this.renderPinsUrls()}
               {this.renderPinsData()}

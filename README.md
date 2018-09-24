@@ -54,6 +54,23 @@ Have fun and good luck!
 
 _The deploy to production should take less than 5 minutes._
 
+## Downloading All Photos for a Pinterest Board
+
+1. Obtain the array of pin URLs
+  These can be copied via the Copy to Clipboard button found in the web app.
+
+2. Paste the array of pin URLs as the only content in `simple-pinterest-ui/tools/pin-urls.json`
+
+3. Run the following script to download all the images:
+
+  ```
+  ruby tools/download-pin-images.rb
+  ```
+
+4. Check inside `tools/` to find all the images that downloaded successfully.
+
+5. Clean-up: Select all the downloaded images, open the menu (right click), and select *New Folder with Selection*
+
 ## Credits
 
 _Concept and Data Science:_ **[Aubrey Browne](https://github.com/AubreyB13)**

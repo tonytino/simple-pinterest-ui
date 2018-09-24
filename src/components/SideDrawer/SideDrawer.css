@@ -61,14 +61,14 @@
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  color: teal;
+  color: rgb(145, 117, 242);
   text-decoration: none;
   font-size: 1.25rem;
 }
 
 .side-drawer a:hover,
 .side-drawer a:active {
-  color: #ff8100;
+  color: rgb(198, 45, 116);
 }
 
 /*

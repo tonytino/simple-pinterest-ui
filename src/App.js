@@ -25,8 +25,8 @@ class App extends Component {
       pinsUrls: [],
       pinsData: [],
       boardsData: [],
-      activeBoardId: '',
-      loadingPins: [],
+      activeBoardId: '300545043822002582',
+      loadingData: false,
     }
 
     this.fetchPins = this.fetchPins.bind(this);
@@ -66,14 +66,17 @@ class App extends Component {
 
   fetchPins() {
     console.log('Fetching data from Pinterest...');
+    this.setState({ loadingData: true })
+
+    const { activeBoardId } = this.state;
+
     let boardPins = [];
     let boardsData = [];
     let boardPinsUrls = [];
-    const boardId = '300545043822002582';
 
     if (!!Pinterest.getSession()) {
       Pinterest.request(
-        `/boards/${boardId}/pins/`,
+        `/boards/${activeBoardId}/pins/`,
         { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },
         response => {
           console.log('Raw Response', response);
@@ -125,6 +128,11 @@ class App extends Component {
         pins: [DefaultPhotoUrl]
       });
     }
+
+    console.log('Data fetching complete.')
+    this.setState({
+      loadingData: false
+    })
   }
 
   renderPin = (pin, index) => {
@@ -195,7 +203,7 @@ class App extends Component {
   }
 
   render() {
-    const { pins } = this.state;
+    const { pins, loadingData } = this.state;
 
     const pinsToRender = pins.length
       ? pins.map((pin, index) => this.renderPin(pin, index))
@@ -214,16 +222,28 @@ class App extends Component {
 
         { this.renderBackdrop() }
 
-        <main>
-          <div className="pins-container">
-            <h3>Most Recent Pin(s) for Board</h3>
-            {pinsToRender}
-            <i>May only be showing a single pin due to rate limiting.</i>
-          </div>
-          {this.renderPinsUrls()}
-          {this.renderPinsData()}
-          {this.renderBoardsData()}
-        </main>
+        {
+          loadingData
+          ? (
+            <main>
+              <div className="loading-screen">
+                <div className="loader"></div>
+              </div>
+            </main>
+          )
+          : (
+            <main>
+              <div className="pins-container">
+                <h3>Most Recent Pin(s) for Board</h3>
+                {pinsToRender}
+                <i>May only be showing a single pin due to rate limiting.</i>
+              </div>
+              {this.renderPinsUrls()}
+              {this.renderPinsData()}
+              {this.renderBoardsData()}
+            </main>
+          )
+        }
 
         <br>
         </br>

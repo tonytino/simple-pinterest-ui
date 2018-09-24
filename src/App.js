@@ -104,15 +104,15 @@ class App extends Component {
             Pinterest.me('boards', response => {
               boardsData = response.data;
               console.log('Your Boards Data', response.data);
+              this.setState({ boardsData: boardsData });
             })
-            console.log('testing');
 
             // Update the page to load the first pin (avoid rate limit)
             this.setState({
               pins: [boardPinsUrls[0]],
               pinsUrls: boardPinsUrls,
               pinsData: boardPins,
-              boardsData: boardsData,
+              loadingData: false
             });
           } catch(error) {
             console.error(error);
@@ -128,11 +128,6 @@ class App extends Component {
         pins: [DefaultPhotoUrl]
       });
     }
-
-    console.log('Data fetching complete.')
-    this.setState({
-      loadingData: false
-    })
   }
 
   renderPin = (pin, index) => {

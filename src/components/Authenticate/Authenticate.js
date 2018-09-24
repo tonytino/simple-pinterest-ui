@@ -26,7 +26,6 @@ class UserSessionControls extends React.Component {
   }
 
   resetState() {
-    console.log('Status', !!Pinterest.getSession());
     this.setState({
       loggedIn: !!Pinterest.getSession()
     })

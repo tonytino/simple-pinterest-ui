@@ -15,9 +15,9 @@ main {
 }
 
 .loading-screen .loader {
-  border: 5px solid #f3f3f3; /* Light grey */
-  border-top: 5px solid rgb(145, 117, 242); /* Blue */
-  border-bottom: 5px solid rgb(145, 117, 242); /* Blue */
+  border: 5px solid #f3f3f3; /* Light Grey */
+  border-top: 5px solid rgb(145, 117, 242); /* Light Purple */
+  border-bottom: 5px solid rgb(145, 117, 242); /* Light Purple */
   border-radius: 50%;
   width: 2rem;
   height: 2rem;

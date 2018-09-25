@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Component } from 'react';
 import './Authenticate.css';
 
 const Pinterest = window.PDK;
 
-class UserSessionControls extends React.Component {
+class UserSessionControls extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -38,6 +39,7 @@ class UserSessionControls extends React.Component {
 
   processLogout() {
     this.props.onAuthenticate();
+    this.props.onLogout();
     this.resetState();
   }
 
@@ -67,7 +69,10 @@ class UserSessionControls extends React.Component {
 
 const Authenticate = (props) => (
   <div className="user-session-controls">
-    <UserSessionControls onAuthenticate={props.onAuthenticate} />
+    <UserSessionControls
+      onAuthenticate={props.onAuthenticate}
+      onLogout={props.onLogout}
+    />
   </div>
 );
 

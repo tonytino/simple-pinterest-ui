@@ -28,6 +28,7 @@ const Toolbar = props => (
           <li>
             <Authenticate
               onAuthenticate={props.onAuthenticate}
+              onLogout={props.onLogout}
             />
           </li>
         </ul>

@@ -20,9 +20,7 @@ class App extends Component {
     super(props);
     this.state = {
       sideDrawerOpen: false,
-      sideDrawerData: [],
       pins: [],
-      boards: [],
       pinsUrls: [],
       pinsData: [],
       boardsData: [],
@@ -31,11 +29,22 @@ class App extends Component {
     }
 
     this.fetchPins = this.fetchPins.bind(this);
-  }
+    this.processLogout = this.processLogout.bind(this);
+  };
 
   componentDidMount() {
     this.fetchPins();
-  }
+  };
+
+  processLogout() {
+    this.setState({
+      pins: [],
+      pinsUrls: [],
+      pinsData: [],
+      boardsData: [],
+      activeBoardId: '300545043822002582'
+    })
+  };
 
   drawerToggleClickHandler = () => {
     this.setState((prevState) => {
@@ -52,7 +61,14 @@ class App extends Component {
     // If we introduce other components, like a modal, that would depend on this
     // functionality, we would simply also set their states to "closed" here too
     this.setState({ sideDrawerOpen: false });
-  }
+  };
+
+  setAsActiveBoardId = (boardId) => {
+    this.setState({
+      activeBoardId: boardId
+    });
+    this.fetchPins();
+  };
 
   renderBackdrop = () => {
     // Can also be based on other conditions, like a modal being open
@@ -131,7 +147,7 @@ class App extends Component {
         loadingData: false
       });
     }
-  }
+  };
 
   renderPin = (pin, index) => {
     return (
@@ -143,7 +159,7 @@ class App extends Component {
         <br />
       </div>
     )
-  }
+  };
 
   renderPinsUrls = () => {
     const { pinsUrls } = this.state;
@@ -176,7 +192,7 @@ class App extends Component {
         </div>
       )
     }
-  }
+  };
 
   renderPinsData = () => {
     const { pinsData } = this.state;
@@ -199,7 +215,7 @@ class App extends Component {
         </div>
       )
     }
-  }
+  };
 
   renderBoardsData = () => {
     const { boardsData } = this.state;
@@ -222,10 +238,10 @@ class App extends Component {
         </div>
       )
     }
-  }
+  };
 
   render() {
-    const { pins, loadingData } = this.state;
+    const { boardsData, pins, loadingData } = this.state;
 
     const pinsToRender = pins.length
       ? pins.map((pin, index) => this.renderPin(pin, index))
@@ -236,9 +252,12 @@ class App extends Component {
         <Toolbar
           drawerClickHandler={this.drawerToggleClickHandler}
           onAuthenticate={this.fetchPins}
+          onLogout={this.processLogout}
         />
 
         <SideDrawer
+          setAsActiveBoardId={this.setAsActiveBoardId(boardId)}
+          boards={boardsData}
           show={this.state.sideDrawerOpen}
         />
 
@@ -272,7 +291,7 @@ class App extends Component {
         </br>
       </div>
     );
-  }
+  };
 }
 
 export default App;

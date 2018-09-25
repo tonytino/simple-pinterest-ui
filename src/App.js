@@ -66,7 +66,6 @@ class App extends Component {
   };
 
   fetchPins() {
-    console.log('Fetching data from Pinterest...');
     this.setState({ loadingData: true })
 
     const { activeBoardId } = this.state;
@@ -76,8 +75,8 @@ class App extends Component {
     let boardPinsUrls = [];
 
     if (!!Pinterest.getSession()) {
-      Pinterest.request(
-        `/boards/${activeBoardId}/pins/`,
+      console.log('Fetching data from Pinterest...');
+      Pinterest.request(`/boards/${activeBoardId}/pins/`,
         { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },
         response => {
           console.log('Raw Response', response);
@@ -102,7 +101,9 @@ class App extends Component {
             console.log('URLs for all the pins', boardPinsUrls);
 
             // Log boards data
-            Pinterest.me('boards', response => {
+            Pinterest.me('boards',
+              { fields: 'id,name,url,description,creator,created_at,counts,image' },
+              response => {
               boardsData = response.data;
               console.log('Your Boards Data', response.data);
               this.setState({ boardsData: boardsData });

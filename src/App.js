@@ -65,7 +65,8 @@ class App extends Component {
 
   setAsActiveBoardId = (boardId) => {
     this.setState({
-      activeBoardId: boardId
+      activeBoardId: boardId,
+      sideDrawerOpen: false
     });
     this.fetchPins();
   };
@@ -256,7 +257,7 @@ class App extends Component {
         />
 
         <SideDrawer
-          setAsActiveBoardId={this.setAsActiveBoardId(boardId)}
+          setAsActiveBoardId={this.setAsActiveBoardId}
           boards={boardsData}
           show={this.state.sideDrawerOpen}
         />

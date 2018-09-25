@@ -68,7 +68,7 @@ class App extends Component {
       activeBoardId: boardId,
       sideDrawerOpen: false
     });
-    this.fetchPins();
+    this.fetchPins(boardId);
   };
 
   renderBackdrop = () => {
@@ -82,10 +82,11 @@ class App extends Component {
     };
   };
 
-  fetchPins() {
+  fetchPins(boardId) {
     this.setState({ loadingData: true })
 
     const { activeBoardId } = this.state;
+    const desiredBoardId = boardId ? boardId : activeBoardId;
 
     let boardPins = [];
     let boardsData = [];
@@ -93,7 +94,7 @@ class App extends Component {
 
     if (!!Pinterest.getSession()) {
       console.log('Fetching data from Pinterest...');
-      Pinterest.request(`/boards/${activeBoardId}/pins/`,
+      Pinterest.request(`/boards/${desiredBoardId}/pins/`,
         { fields: 'id,link,url,creator,board,created_at,note,color,counts,media,attribution,image,metadata' },
         response => {
           console.log('Raw Response', response);
@@ -276,7 +277,11 @@ class App extends Component {
           : (
             <main>
               <div className="pins-container">
-                <h3>Most Recent Pins for Board</h3>
+                {
+                  boardsData.length
+                    ? (<h3>Most Recent Pins for Board</h3>)
+                    : (<h3>Log in to get started!</h3>)
+                }
                 {pinsToRender}
               </div>
               {this.renderPinsUrls()}

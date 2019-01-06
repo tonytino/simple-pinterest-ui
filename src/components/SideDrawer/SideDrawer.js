@@ -1,5 +1,3 @@
-// Credit goes to this tutorial:
-// https://www.youtube.com/watch?v=l6nmysZKHFU
 import React from 'react';
 import './SideDrawer.css'
 
@@ -13,52 +11,21 @@ const sideDrawer = props => {
   return (
     <nav className={drawerClasses}>
       <ul>
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
-
-        <li>
-          <a href="/">Another Wedding Board</a>
-        </li>
+        {
+          props.boards.map((board, index) => {
+            return (
+              <li key={index}>
+                <a
+                  onClick={() => {
+                    props.setAsActiveBoardId(board.id);
+                  }}
+                >
+                  {board.name}
+                </a>
+              </li>
+            )
+          })
+        }
       </ul>
     </nav>
   );

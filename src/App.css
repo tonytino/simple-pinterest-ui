@@ -6,12 +6,96 @@ main {
   margin-top: 65px;
 }
 
+main p {
+  font-size: x-small;
+  text-align: center;
+  font-style: italic;
+}
+
+.loading-screen {
+  text-align: center;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.loading-screen .loader {
+  border: 5px solid #f3f3f3; /* Light Grey */
+  border-top: 5px solid rgb(145, 117, 242); /* Light Purple */
+  border-bottom: 5px solid rgb(145, 117, 242); /* Light Purple */
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  margin: auto;
+  margin-top: 2rem;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.pins-container {
+  text-align: center;
+}
+
 .pins-container img {
   display: block;
   margin: auto;
   height: auto;
 }
 
+.pins-urls-pre-wrap,
+.boards-data-pre-wrap,
+.pins-data-pre-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.pins-urls-pre-wrap pre,
+.boards-data-pre-wrap pre,
+.pins-data-pre-wrap pre {
+  width: 80%;
+  max-width: 70%;
+  max-height: 20rem;
+  margin: auto;
+  font-size: 12px;
+  overflow-wrap: break-word;
+  overflow: scroll;
+  white-space: pre-wrap;
+}
+
+.copy-to-clipboard {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: 2px solid rgb(198, 45, 116);
+  cursor: pointer;
+  outline: none;
+  color: rgb(198, 45, 116);
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  width: 30%;
+  margin-bottom: 1rem;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+.copy-to-clipboard:active {
+  background-color: rgb(198, 45, 116);
+  color: white;
+}
+
+h3 {
+  text-align: center;
+}
 
 @media (max-width: 768px) {
   .pins-container img {

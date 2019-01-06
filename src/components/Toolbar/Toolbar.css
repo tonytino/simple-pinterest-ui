@@ -1,7 +1,7 @@
 .toolbar {
   position: fixed;
   width: 100%;
-  background: teal;
+  background: rgb(145, 117, 242);
   top: 0;
   left: 0;
   height: 55px;
@@ -46,8 +46,7 @@
 .toolbar__logo a:hover,
 .toolbar__navigation-items a:hover,
 .toolbar__navigation-items a:active {
-  /* Orange variant - May not be permanent choice, but is suffice for now */
-  color: #ff8100;
+  color: rgb(19, 6, 34);
 }
 
 .spacer {

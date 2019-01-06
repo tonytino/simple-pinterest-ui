@@ -49,6 +49,7 @@
 .side-drawer li {
   height: 5rem;
   text-align: center;
+  cursor: pointer;
 }
 
 .side-drawer li:hover {
